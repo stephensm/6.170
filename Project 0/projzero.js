@@ -6,10 +6,12 @@ function inc(x) {
 }
 
 // Problem 2
-var count=0;
-function counter() {
-	return count+=1;				// returns incremented count	     
-}
+var counter=(function(){			// closure!
+	var count=0;					// keep the count within the class
+	return function() {
+		return count+=1;			// returns incremented count	     
+	};
+})();
 
 // Problem 3
 function Inc(){
@@ -73,7 +75,8 @@ function counterFromArray(n){
 	}
 }
 
-// Test function
+// Test functions for the sub problems. These are kinda crappy and don't use jasmine...
+// All of the console logs should be true. 
 function Tests(){
 	// Problem 1
 	console.log(inc(1)===2);
@@ -165,4 +168,3 @@ function Tests(){
 		console.log(e.message==='Negative size');
 	}
 }
-Tests();
